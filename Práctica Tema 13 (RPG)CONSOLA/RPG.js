@@ -36,11 +36,11 @@ var Jugador = /** @class */ (function () {
     Jugador.prototype.imprimirAtributos = function () {
         console.log("Puntos de Salud: ".concat(this.puntos_salud));
         console.log("Puntos de Ataque: ".concat(this.puntos_ataque));
-        console.log("Dinero: ".concat(this.oro));
+        console.log("Oro: ".concat(this.oro));
     };
     Jugador.prototype.calcularFuerzaInicial = function () {
-        //Puntos de ataque aleatorios entre 1 y 15
-        this.puntos_ataque = Math.floor(Math.random() * 13) + 1;
+        //Puntos de ataque aleatorios entre 1 y 12
+        this.puntos_ataque = Math.floor(Math.random() * 12) + 1;
     };
     return Jugador;
 }());
@@ -93,7 +93,7 @@ function Main() {
         console.log("1.Luchar contra el enemigo");
         console.log("2.Comprar ítems");
         console.log("3.Consultar estadisticas ");
-        console.log("4.Pagar 1 para generar nueva fuerza");
+        console.log("4.Pagar 1 de Oro para generar nueva fuerza");
         console.log("5.Exit");
         opcion = readlineSync.questionInt('Ingresa tu eleccion:');
         switch (opcion) {
@@ -113,7 +113,7 @@ function Main() {
                     break;
                 }
                 else {
-                    console.log("Si no tienes dinero pa que vienes");
+                    console.log("Si no tienes oro pa que vienes");
                     break;
                 }
             case 5:
@@ -136,6 +136,7 @@ function Main() {
         ];
         var nombreEnemigo = Math.floor(Math.random() * enemigos.length); //Al ser un numero el nombre sera la posicion en el array
         enemigos[nombreEnemigo].calcularFuerzaEnemigo(); //Calculamos su fuerza
+        console.log("Estas luchando contra ".concat(enemigos[nombreEnemigo].nombre));
         if (jugador.puntos_salud == 0) {
             console.log("GAME OVER");
             return;
@@ -144,7 +145,7 @@ function Main() {
             console.log("---------------------------------------");
             console.log("Has ganado!!!!!!");
             jugador.oro += enemigos[nombreEnemigo].soltarDinero();
-            console.log("Tienes ".concat(jugador.oro, " oro"));
+            console.log("Tienes ".concat(jugador.oro, " de  oro"));
             console.log("---------------------------------------");
         }
         if (jugador.puntos_ataque < enemigos[nombreEnemigo].puntos_ataque) {
@@ -154,7 +155,7 @@ function Main() {
             var vidaPerdida = (enemigos[nombreEnemigo].puntos_ataque) - (jugador.puntos_ataque);
             jugador.puntos_salud -= vidaPerdida;
             console.log("---------------------------------------");
-            console.log("Has perdido ".concat(vidaPerdida, " y te quedan ").concat(jugador.puntos_salud));
+            console.log("Has perdido ".concat(vidaPerdida, " de vida  y te quedan ").concat(jugador.puntos_salud, " "));
             console.log("---------------------------------------");
         }
     }
@@ -171,6 +172,7 @@ function Main() {
                 case 1:
                     if (jugador.oro >= 5) {
                         jugador.puntos_ataque += 5;
+                        jugador.oro -= 5;
                         console.log("Se a\u00F1adio Glock-18 a tu inventario, tu ataque es de ".concat(jugador.puntos_ataque));
                         break;
                     }
@@ -181,6 +183,7 @@ function Main() {
                 case 2:
                     if (jugador.oro >= 15) {
                         jugador.puntos_ataque += 10;
+                        jugador.oro -= 15;
                         console.log("Se a\u00F1adio AK-47 a tu inventario, tu ataque es de ".concat(jugador.puntos_ataque));
                         break;
                     }
@@ -191,6 +194,7 @@ function Main() {
                 case 3:
                     if (jugador.oro >= 5) {
                         jugador.puntos_salud += 5;
+                        jugador.oro -= 5;
                         console.log("Te has curado,compraste una venda, tu vida es de ".concat(jugador.puntos_salud));
                         break;
                     }
@@ -201,6 +205,7 @@ function Main() {
                 case 4:
                     if (jugador.oro >= 10) {
                         jugador.puntos_salud += 10;
+                        jugador.oro -= 10;
                         console.log("Te has curado, compraste un botiquin, tu vida es de ".concat(jugador.puntos_salud));
                         break;
                     }
