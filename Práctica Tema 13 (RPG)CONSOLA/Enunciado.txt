@@ -1,0 +1,89 @@
+El reinado de Medac
+En esta práctica adicional, vamos a realizar un juego simple de RPG donde
+el jugador se enfrentará a distintos enemigos que representan a compañeros o
+profesores de Medac. El jugador podrá ir mejorando sus puntos de ataque y
+puntos de salud y podrá enfrentarse a dichos enemigos, ganando oro si
+consiguen la victoria o perdiendo puntos de salud si el jugador es derrotado.
+Para realizar todo esto haremos uso de todos los conceptos vistos en clase,
+tal como clases, objetos, bucles, condicionales...
+
+Clase Jugador
+
+● Debe tener los siguientes atributos: nombre, puntos_salud,
+puntos_ataque, y dinero.
+● Constructor por parámetro que recibe por parámetro solo el
+nombre. Los puntos de salud se inician a 20, los puntos de ataque
+a 0 y el dinero a 2.
+● Métodos get y set (opcional ya que los atributos no son privados)
+● Método para imprimir todos los atributos.
+● Debe tener un método “calcularFuerzaInicial” que establece
+aleatoriamente los puntos de ataque iniciales del jugador.
+CFGS Desarrollo de Aplicaciones Web / CFGS Desarrollo de Aplicaciones Multiplataforma
+MEDAC, Instituto Oficial de Formación Profesional
+
+Clase Enemigo
+
+● Debe tener los atributos nombre y puntos_ataque.
+● Constructor por parámetro que recibe por parámetro solo el
+nombre. Los puntos de ataque se inician a 0.
+● Métodos set y get. (opcional ya que los atributos no son privados)
+● Debe tener un calcularFuerzaEnemigo que asigna aleatoriamente
+los puntos de ataque del enemigo.
+● Método soltarDinero que es el oro que va a soltar el enemigo al ser
+vencido, debe establecerse de forma aleatoria.
+
+Función Main
+
+● Crea un array que contenga el nombre de los enemigos.
+● Muestra por pantalla una pequeña introducción a la historia del
+juego (puedes hacerlo como una función)
+● Introduce tu nombre por consola y crea el objeto Jugador con tu
+nombre
+● Calcula tu fuerza inicial. Al calcularla si no estás conforme porque
+es muy baja, puedes tener la opción de cambiar el valor (de forma
+aleatoria) de tu fuerza a cambio de 1 oro o la opción de quedarte
+con la fuerza que tienes.
+● Crea un bucle que es la parte principal del juego.
+○ Muestra un menú principal (puede ser una función) que tiene
+las siguientes opciones
+■ 1. Luchar contra el enemigo
+■ 2. Comprar ítems
+CFGS Desarrollo de Aplicaciones Web / CFGS Desarrollo de Aplicaciones Multiplataforma
+MEDAC, Instituto Oficial de Formación Profesional
+■ 3. Consultar tus estadísticas
+■ 4. Salir del juego
+○ Crea un Switch con las opciones anteriores.
+Luchar contra el enemigo
+■ Para luchar contra un enemigo, saca de forma aleatoria
+un nombre del array de enemigos, entonces crea un
+objeto de la clase Enemigo pasándole por parámetro
+dicho nombre.
+■ Calcula la fuerza del enemigo
+■ Crea una sentencia condicional que compare la fuerza
+del jugador y la del enemigo
+● Si tu fuerza es mayor o igual que la del enemigo
+ganas el combate y ganas oro
+● Si es menor pierdes puntos de salud. Pierdes de
+puntos de salud la diferencia de ataque entre el
+ataque del enemigo y tu ataque. Ej: el enemigo
+tiene 10p de ataque y tú 7p, perderías entonces
+3p de salud.
+○ Al perder, si tu vida llega a 0, pierdes el
+juego.
+Comprar ítems
+■ Muestra un panel de opciones (debe ser una función)
+con las armas disponibles a comprar, las estadísticas
+que te pueden dar y su precio. También pueden haber
+ítems para curarte.
+CFGS Desarrollo de Aplicaciones Web / CFGS Desarrollo de Aplicaciones Multiplataforma
+MEDAC, Instituto Oficial de Formación Profesional
+■ Elige la opción que prefieras
+■ Crea una sentencia condicional que dependiendo de la
+opción elegida compres un arma u otra, debes
+comprobar que tienes el oro suficiente. Al comprar un
+arma debes restar la cantidad de dinero y sumar los
+puntos de ataque extra.
+Consultar estadísticas
+■ Muestras las estadísticas del jugador
+Salir del juego
+■ Con esta opción sales del juego
