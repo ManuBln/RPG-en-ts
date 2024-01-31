@@ -108,7 +108,7 @@ function Main() {
                 jugador.imprimirAtributos();
                 break;
             case 4:
-                if (jugador.oro >= 5) {
+                if (jugador.oro >= 1) {
                     cambiarFuerza();
                     break;
                 }
@@ -141,15 +141,21 @@ function Main() {
             return;
         }
         if (jugador.puntos_ataque >= enemigos[nombreEnemigo].puntos_ataque) {
+            console.log("---------------------------------------");
             console.log("Has ganado!!!!!!");
             jugador.oro += enemigos[nombreEnemigo].soltarDinero();
             console.log("Tienes ".concat(jugador.oro, " oro"));
+            console.log("---------------------------------------");
         }
         if (jugador.puntos_ataque < enemigos[nombreEnemigo].puntos_ataque) {
+            console.log("---------------------------------------");
             console.log("Has perdido ahahahahaa");
+            console.log("---------------------------------------");
             var vidaPerdida = (enemigos[nombreEnemigo].puntos_ataque) - (jugador.puntos_ataque);
             jugador.puntos_salud -= vidaPerdida;
+            console.log("---------------------------------------");
             console.log("Has perdido ".concat(vidaPerdida, " y te quedan ").concat(jugador.puntos_salud));
+            console.log("---------------------------------------");
         }
     }
     function comprarItems() {

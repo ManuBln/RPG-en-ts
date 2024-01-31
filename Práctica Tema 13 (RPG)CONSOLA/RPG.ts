@@ -159,7 +159,7 @@ function Main(): void {
                 jugador.imprimirAtributos();
                 break;
             case 4:
-                if (jugador.oro >= 5) {
+                if (jugador.oro >= 1) {
                     cambiarFuerza();
                     break;
                 } else {
@@ -201,15 +201,21 @@ function Main(): void {
             console.log("GAME OVER");
             return;
         } if (jugador.puntos_ataque >= enemigos[nombreEnemigo].puntos_ataque) {
+            console.log("---------------------------------------");
             console.log("Has ganado!!!!!!");
             jugador.oro += enemigos[nombreEnemigo].soltarDinero();
             console.log(`Tienes ${jugador.oro} oro`);
+            console.log("---------------------------------------");
 
         } if (jugador.puntos_ataque < enemigos[nombreEnemigo].puntos_ataque) {
+            console.log("---------------------------------------");
             console.log("Has perdido ahahahahaa");
+            console.log("---------------------------------------");
             let vidaPerdida = (enemigos[nombreEnemigo].puntos_ataque) - (jugador.puntos_ataque);
             jugador.puntos_salud -= vidaPerdida;
+            console.log("---------------------------------------");
             console.log(`Has perdido ${vidaPerdida} y te quedan ${jugador.puntos_salud}`)
+            console.log("---------------------------------------");
 
         }
     }
@@ -225,6 +231,8 @@ function Main(): void {
             console.log("4.Botiquin por 10 de oro");
             console.log("5.Exit");
             opcion = readlineSync.questionInt('Ingresa tu eleccion:');
+            
+            
 
             switch (opcion) {
 
